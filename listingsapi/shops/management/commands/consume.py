@@ -48,8 +48,8 @@ def handle_shop_created(message):
         user_data = message[0][0]['user_data']
         
         # Create the Shop object
-        shop = Shop.objects.create(created_by=user_data['id'], name=f"{user_data['username']}'s shop")
-        print(f'Shop created: {shop.name} - {shop.created_by}')
+        shop = Shop.objects.create(shop_owner=user_data['id'], name=f"{user_data['username']}'s shop")
+        print(f'Shop created: {shop.name} - {shop.shop_owner}')
     except Exception as e:
         print(f'Error creating Shop: {str(e)}')
 

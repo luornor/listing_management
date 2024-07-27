@@ -8,11 +8,20 @@ class Shop(models.Model):
 
 
     def __str__(self) -> str:
-        return f"shop - {self.name}"
+        return f"shop - {self.id}"
 
 class Listing(models.Model):
+    class Category(models.TextChoices):
+        ELECTRONICS = 'electronics'
+        FASHION = 'fashion'
+        HOME = 'home'
+        BEAUTY = 'beauty'
+        BOOKS = 'books'
+        TOYS = 'toys'
+        OTHER = 'other'
     shop_id = models.ForeignKey(Shop, related_name='listings', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, null=True, blank=True)
+    category = models.CharField(max_length=50, choices=Category.choices, default=Category.OTHER)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image_url = models.CharField(max_length=255,blank=True,null=True)
