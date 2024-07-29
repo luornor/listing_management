@@ -20,8 +20,8 @@
 
 1. **Clone the repository:**
 
-   git clone https://github.com/luornor/api-gateway.git
-   cd api-gateway
+   git clone https://github.com/luornor/listing_managemnt.git
+   cd listing_management
    
 ## Create a virtual environment:
 
