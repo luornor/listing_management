@@ -34,11 +34,16 @@ def handle_listing_updated(message):
         order_data = message[0][0]['order_data']
         
         # Update the Listing object
-        product_id = order_data['listing_id']
-        product = Listing.objects.get(id=product_id)
-        product.quantity -= order_data['quantity']
-        product.save()
-        print(f'Product updated: {product.name} - {product.stock_quantity}')
+        for item in order_data['items']:
+            listing_id = item['listing_id']
+            quantity = item['quantity']
+            
+            # Update the Listing object
+            product = Listing.objects.get(id=listing_id)
+            product.quantity -= quantity  # assuming 'stock_quantity' is the field name in Listing
+            product.save()
+            print(f'Product updated: {product.title} - {product.quantity}')
+        
     except Exception as e:
         print(f'Error Updating Product: {str(e)}')
 
