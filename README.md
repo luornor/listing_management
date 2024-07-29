@@ -20,7 +20,7 @@
 
 1. **Clone the repository:**
 
-   git clone https://github.com/luornor/listing_managemnt.git
+   git clone https://github.com/luornor/listing_management.git
    cd listing_management
    
 ## Create a virtual environment:
